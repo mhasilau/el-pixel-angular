@@ -1,0 +1,8 @@
+@for (person of people; track person.id) {
+  <div class="person-card">
+    <h2>{{ person.name }}</h2>
+    <p>email: {{ person.email }}</p>
+    <p>phone: {{ person.phone }}</p>
+    <button (click)="more(person.id)">More...</button>
+  </div>
+}
