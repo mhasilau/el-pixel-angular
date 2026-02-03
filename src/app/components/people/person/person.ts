@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PeopleService } from '../../../services/people';
 import { CommonModule } from '@angular/common';
+import { filter, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-person',
@@ -24,10 +25,24 @@ export class Person implements OnInit {
 
     console.log(this.route.snapshot.params);
 
-    this.peopleService.getPersonById(id).subscribe((data) => {
-      this.person = data;
-      console.log('Person data:', data);
-    });
+    this.peopleService
+      .getPersonById(id)
+      .pipe(
+        tap((person) => console.log('TAP data:', person)),
+        map((person) => {
+          return {
+            ...person,
+            gettingAt: new Date(),
+          };
+        }),
+        // filter((person) => person.aaa),
+        tap((person) => console.log('TAP data end:', person)),
+      )
+      .subscribe((person) => {
+        console.log({ person });
+
+        this.person = person;
+      });
 
     // this.peopleService.deletePersonById(id).subscribe((data) => {
     //   console.log('Person data:', data);

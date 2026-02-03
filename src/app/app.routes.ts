@@ -6,6 +6,7 @@ import { Notifications } from './components/settings/notifications/notifications
 import { securityRoutes } from './components/settings/security.routes';
 import { People } from './components/people/people';
 import { Person } from './components/people/person/person';
+import { RxjsMain } from './components/rxjs/rxjs-main/rxjs-main';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,9 @@ export const routes: Routes = [
   {
     path: 'people/:id',
     component: Person,
+  },
+  {
+    path: 'rxjs',
+    component: RxjsMain,
   },
 ];
