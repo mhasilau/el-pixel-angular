@@ -2,10 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RxjsOne } from '../rxjs-one/rxjs-one';
 import { RxjsTwo } from '../rxjs-two/rxjs-two';
+import { RxjsMaps } from '../rxjs-maps/rxjs-maps';
 
 @Component({
   selector: 'app-rxjs-main',
-  imports: [RxjsOne, RxjsTwo],
+  imports: [RxjsOne, RxjsTwo, RxjsMaps],
   templateUrl: './rxjs-main.html',
   styleUrl: './rxjs-main.scss',
 })
