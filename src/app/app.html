@@ -13,6 +13,12 @@
       <li>
         <button [routerLink]="'rxjs'">RXJS</button>
       </li>
+      <li>
+        <button [routerLink]="'demo-deactivate'">Deactivate</button>
+      </li>
+      <li>
+        <button (click)="goToPerson(randId)">Перейти к person-resolve</button>
+      </li>
     </ul>
   </div>
   <router-outlet></router-outlet>

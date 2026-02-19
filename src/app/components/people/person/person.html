@@ -1,3 +1,41 @@
-@if (person) {
-  {{ person | json }}
-}
+{{ today | date: 'MM d, y, hh:mm:ss a z' }}
+<p>{{ 134234000 | currency: 'RUB' : 'symbol' : '1.1-1' }}</p>
+
+<div class="person-card" *ngIf="person">
+  <div class="person-header">
+    <h2>{{ person.name }}</h2>
+    <span class="person-username">@{{ person.username | uppercase | person: 5 }}</span>
+  </div>
+  <div class="person-body">
+    <div class="person-section">
+      <strong>Email:</strong>
+      <a href="mailto:{{ person.email }}">{{ person.email | uppercase | person: 5 }}</a>
+    </div>
+    <div class="person-section">
+      <strong>Phone:</strong> <a href="tel:{{ person.phone }}">{{ person.phone }}</a>
+    </div>
+    <div class="person-section">
+      <strong>Website:</strong>
+      <a href="http://{{ person.website }}" target="_blank">{{ person.website }}</a>
+    </div>
+    <div class="person-section">
+      <strong>Address:</strong>
+      <div class="person-address">
+        {{ person.address.street }}, {{ person.address.suite }}<br />
+        {{ person.address.city }}, {{ person.address.zipcode }}
+      </div>
+    </div>
+    <div class="person-section">
+      <strong>Company:</strong>
+      <div class="person-company">
+        <div>
+          <b>{{ person.company.name }}</b>
+        </div>
+        <div>
+          <i>{{ person.company.catchPhrase }}</i>
+        </div>
+        <div>{{ person.company.bs }}</div>
+      </div>
+    </div>
+  </div>
+</div>

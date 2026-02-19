@@ -2,3 +2,16 @@
 @if (loading) {
   <div>Загрузка...</div>
 }
+<button matButton="outlined" (click)="generateId()">Basic</button>
+
+<form class="example-form custom" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi" formControlName="food" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." formArrayName="comment"></textarea>
+  </mat-form-field>
+</form>

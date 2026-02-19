@@ -1,1 +1,7 @@
-<p>main-page works!</p>
+{{ 'some text' | uppercase }}
+
+<button (click)="showModal()">show modal</button>
+
+@for (item of arr; track item.id) {
+  {{ item.name }}
+}

@@ -3,10 +3,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PeopleService } from '../../../services/people';
 import { CommonModule } from '@angular/common';
 import { filter, map, tap } from 'rxjs';
+import { PersonPipe } from './person-pipe';
+
+interface IPerson {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
 
 @Component({
   selector: 'app-person',
-  imports: [CommonModule],
+  imports: [CommonModule, PersonPipe],
   templateUrl: './person.html',
   styleUrl: './person.scss',
 })
@@ -15,7 +40,8 @@ export class Person implements OnInit {
   peopleService = inject(PeopleService);
   route = inject(ActivatedRoute);
 
-  person: any = null;
+  person: IPerson | null = null;
+  today = new Date();
 
   ngOnInit(): void {
     // const id = Number(this.router.url.split('/').pop());
